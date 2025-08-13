@@ -1,0 +1,250 @@
+export default function LajoieSite() {
+  const navItems = [
+    { label: "Accueil", href: "#accueil" },
+    { label: "À propos", href: "#apropos" },
+    { label: "Mission & Valeurs", href: "#mission" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-yellow-100 via-yellow-50 to-green-50 text-gray-800">
+      {/* Top announcement bar */}
+      <div className="w-full bg-green-700 text-white text-center py-2 text-sm">
+        Ouvert aussi les fins de semaine • Garderie non subventionnée • 0 à 5 ans (avec pouponnière)
+      </div>
+
+      {/* Navbar */}
+      <header className="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-green-100">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <a href="#accueil" className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-yellow-300 to-green-400 grid place-items-center shadow">
+              <span className="font-black">L</span>
+            </div>
+            <div className="leading-tight">
+              <p className="font-extrabold tracking-tight">Garderie Éducative Lajoie</p>
+              <p className="text-xs text-gray-500">4037 Rue Beaubien E, Montréal, QC H1X 1H7</p>
+            </div>
+          </a>
+
+          {/* Dropdown list (liste déroulante) */}
+          <nav className="flex items-center gap-4">
+            <details className="relative">
+              <summary className="cursor-pointer select-none px-4 py-2 rounded-2xl bg-yellow-300 hover:bg-yellow-400 transition shadow text-sm font-semibold">
+                Menu
+              </summary>
+              <ul className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-green-100 overflow-hidden">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className="block px-4 py-3 hover:bg-green-50 text-sm"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+
+            {/* Also render inline links on desktop */}
+            <div className="hidden md:flex items-center gap-3">
+              {navItems.map((item) => (
+                <a key={item.href} href={item.href} className="text-sm font-medium hover:text-green-700">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero / Accueil */}
+      <section id="accueil" className="relative">
+        <div
+          className="relative h-[60vh] md:h-[72vh] w-full overflow-hidden"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1581078426770-6d336e5de7bf?q=80&w=1600&auto=format&fit=crop')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+          <div className="absolute inset-0 max-w-6xl mx-auto px-4 flex items-end pb-10">
+            <div className="text-white">
+              <h1 className="text-3xl md:text-5xl font-extrabold drop-shadow-sm">
+                Un lieu sûr et stimulant pour grandir
+              </h1>
+              <p className="mt-3 md:mt-4 max-w-2xl text-sm md:text-lg text-white/90">
+                Services de garde de 0 à 5 ans, avec pouponnière. Motricité, sorties au parc, ateliers créatifs et apprentissages adaptés à chaque phase de développement. Ouvert aussi les fins de semaine.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="#contact" className="px-5 py-3 rounded-2xl bg-green-500 hover:bg-green-600 transition shadow font-semibold">
+                  Nous joindre
+                </a>
+                <a href="#mission" className="px-5 py-3 rounded-2xl bg-white/90 hover:bg-white transition text-gray-800 font-semibold">
+                  Découvrir notre approche
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services highlights */}
+      <section className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-6">
+        {[
+          {
+            title: "Motricité & jeux actifs",
+            text: "Parcours moteurs, danse, yoga enfants, matériel adapté (ballons, cerceaux).",
+            icon: "🏃‍♀️",
+          },
+          {
+            title: "Sorties & balades au parc",
+            text: "Découverte de la nature, jeux extérieurs quotidiens, sécurité et encadrement.",
+            icon: "🌳",
+          },
+          {
+            title: "Apprentissages par phases",
+            text: "Activités adaptées à l’âge : langage, créativité, autonomie, socialisation.",
+            icon: "🧩",
+          },
+        ].map((c) => (
+          <div key={c.title} className="rounded-2xl bg-white p-6 shadow-sm border border-yellow-100">
+            <div className="text-3xl">{c.icon}</div>
+            <h3 className="mt-3 font-bold text-lg">{c.title}</h3>
+            <p className="mt-2 text-sm text-gray-600">{c.text}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* À propos */}
+      <section id="apropos" className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">À propos de la Garderie Éducative Lajoie</h2>
+            <p className="mt-4 text-gray-700 leading-relaxed">
+              Située au cœur de Rosemont–La Petite-Patrie, notre garderie accueille les enfants de 0 à 5 ans dans un environnement chaleureux, inclusif et sécuritaire. Nous favorisons l’éveil global de l’enfant à travers des activités ludiques, des routines rassurantes et une communication ouverte avec les familles.
+            </p>
+            <ul className="mt-4 space-y-2 text-gray-700 text-sm list-disc list-inside">
+              <li>Garderie <strong>non subventionnée</strong>, ouverte du lundi au dimanche.</li>
+              <li><strong>Pouponnière</strong> dédiée pour les tout-petits (0–18 mois).</li>
+              <li>Programme varié : motricité, ateliers créatifs, lecture, cuisine, musique.</li>
+              <li>Sorties régulières au parc et activités saisonnières.</li>
+              <li>Approche axée sur la <strong>diversité</strong>, le respect et l’inclusion.</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow border border-green-100">
+            <img
+              src="https://images.unsplash.com/photo-1596464716121-8b706c7a17f8?q=80&w=1600&auto=format&fit=crop"
+              alt="Enfants en salle de classe, activité éducative"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Valeurs */}
+      <section id="mission" className="bg-gradient-to-r from-yellow-50 to-green-50 border-y border-green-100">
+        <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
+          <div className="rounded-2xl overflow-hidden shadow border border-yellow-100">
+            <img
+              src="https://images.unsplash.com/photo-1500341148336-1f07a01b2f77?q=80&w=1600&auto=format&fit=crop"
+              alt="Enfants jouant dehors au parc"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Notre mission & nos valeurs</h2>
+            <p className="mt-4 text-gray-700">
+              Offrir un milieu de vie riche et bienveillant où chaque enfant progresse à son rythme et explore le monde par le jeu.
+            </p>
+            <div className="mt-6 grid gap-3">
+              {[
+                { k: "Sécurité & bien-être", v: "Surveillance attentive, routines stables, hygiène exemplaire." },
+                { k: "Inclusion & diversité", v: "Respect des origines, langues et cultures; matériel représentatif." },
+                { k: "Développement global", v: "Langage, cognition, social, affectif et motricité valorisés." },
+                { k: "Partenariat avec les familles", v: "Échanges quotidiens, transparence et collaboration." },
+                { k: "Plaisir d’apprendre", v: "Apprentissages actifs par le jeu, l’art et la nature." },
+              ].map((item) => (
+                <div key={item.k} className="rounded-2xl bg-white p-4 border border-green-100">
+                  <p className="text-sm"><span className="font-semibold">{item.k} :</span> {item.v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Infos pratiques */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Infos pratiques</h2>
+        <div className="mt-6 grid md:grid-cols-3 gap-6">
+          <div className="rounded-2xl bg-white p-6 shadow-sm border border-yellow-100">
+            <h3 className="font-bold">Âges & pouponnière</h3>
+            <p className="mt-2 text-sm text-gray-700">0 à 5 ans. Section pouponnière (0–18 mois) avec coins sensoriels, dodo et soin adaptés.</p>
+          </div>
+          <div className="rounded-2xl bg-white p-6 shadow-sm border border-yellow-100">
+            <h3 className="font-bold">Horaires</h3>
+            <p className="mt-2 text-sm text-gray-700">Ouvert du <strong>lundi au dimanche</strong>. Possibilité d’horaires flexibles pour les fins de semaine.</p>
+          </div>
+          <div className="rounded-2xl bg-white p-6 shadow-sm border border-yellow-100">
+            <h3 className="font-bold">Garderie non subventionnée</h3>
+            <p className="mt-2 text-sm text-gray-700">Tarification transparente. Reçus pour fins d’impôts disponibles.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Galerie */}
+      <section className="bg-white border-y border-green-100">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">En images</h2>
+          <p className="mt-2 text-gray-600 text-sm">Des espaces lumineux et des sorties régulières au parc.</p>
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
+            {[
+              "https://images.unsplash.com/photo-1596495578065-8e9cd3b4a0fb?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1486663845017-3eedaa78617f?q=80&w=1600&auto=format&fit=crop",
+            ].map((src, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden border border-yellow-100 hover:shadow-lg transition">
+                <img src={src} alt={`Galerie ${i + 1}`} className="w-full h-56 object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Contact</h2>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li><span className="font-semibold">Adresse : </span>4037 Rue Beaubien E, Montréal, QC H1X 1H7</li>
+              <li><span className="font-semibold">Téléphone : </span><a href="tel:+15142984917" className="underline">514-298-4917</a></li>
+              <li><span className="font-semibold">Email : </span><a href="mailto:garderielajoie2018@gmail.com" className="underline">garderielajoie2018@gmail.com</a></li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="mailto:garderielajoie2018@gmail.com?subject=Inscription%20-%20Garderie%20Lajoie" className="px-5 py-3 rounded-2xl bg-green-600 hover:bg-green-700 text-white font-semibold shadow">Demander une place</a>
+              <a href="#apropos" className="px-5 py-3 rounded-2xl bg-yellow-300 hover:bg-yellow-400 font-semibold shadow">En savoir plus</a>
+            </div>
+            <p className="mt-6 text-xs text-gray-500">Nous prônons la diversité et l’inclusion : tous les enfants sont les bienvenus, sans distinction.</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-green-100 shadow">
+            <iframe
+              title="Carte - Garderie Éducative Lajoie"
+              src="https://www.google.com/maps?q=4037%20Rue%20Beaubien%20E,%20Montr%C3%A9al,%20QC%20H1X%201H7&output=embed"
+              className="w-full h-80 border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-8 text-center text-xs text-gray-500">
+        © {new Date().getFullYear()} Garderie Éducative Lajoie — Tous droits réservés.
+      </footer>
+    </div>
+  );
+}
